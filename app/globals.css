@@ -1,0 +1,181 @@
+:root {
+  --fundo: #fff6e9;
+  --texto: #3b2415;
+  --suave: #7a5c46;
+  --destaque: #b4531a;
+  --papel: #ffffff;
+  --borda: #ecd9c2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+
+main {
+  width: 100%;
+  max-width: 480px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 7vw, 2.5rem);
+}
+
+.intro {
+  margin: 0 0 16px;
+  color: var(--suave);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.biscoito {
+  display: block;
+  width: min(260px, 75vw);
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  animation: balanco 2.6s ease-in-out infinite;
+}
+
+.biscoito:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.biscoito:disabled {
+  cursor: default;
+  animation: none;
+}
+
+.biscoito svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.metade {
+  transition: transform 0.6s ease, opacity 0.6s ease 0.25s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.aberto .esquerda {
+  transform: translate(-18px, 4px) rotate(-12deg);
+  opacity: 0.35;
+}
+
+.aberto .direita {
+  transform: translate(18px, 4px) rotate(12deg);
+  opacity: 0.35;
+}
+
+.frase {
+  margin: 8px 0 0;
+  padding: 18px 20px;
+  background: var(--papel);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(59, 36, 21, 0.12);
+  font-size: 1.3rem;
+  line-height: 1.4;
+  animation: surgir 0.5s ease both;
+}
+
+.pix {
+  margin-top: 24px;
+  animation: surgir 0.5s ease both;
+}
+
+.pix h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+
+.pix p {
+  margin: 0 0 12px;
+  color: var(--suave);
+  line-height: 1.4;
+}
+
+.qr {
+  display: block;
+  width: min(220px, 70vw);
+  height: auto;
+  margin: 0 auto 12px;
+  background: #ffffff;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.acoes button {
+  padding: 10px 16px;
+  border: 1px solid var(--destaque);
+  border-radius: 6px;
+  background: var(--destaque);
+  color: #ffffff;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.acoes button.secundario {
+  background: transparent;
+  color: var(--destaque);
+}
+
+@keyframes balanco {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .biscoito,
+  .frase,
+  .pix {
+    animation: none;
+  }
+
+  .metade {
+    transition: none;
+  }
+}
