@@ -2,8 +2,11 @@ import QRCode from "qrcode";
 import { gerarPix } from "../lib/pix";
 import Biscoito from "./Biscoito";
 
+const PIX_CHAVE = "+5591980647336";
+const PIX_NOME = "Fábio Raphael";
+const PIX_CIDADE = "BRASIL";
+
 export default async function Page() {
-  const { PIX_CHAVE, PIX_NOME, PIX_CIDADE } = process.env;
   const payload = gerarPix(PIX_CHAVE, PIX_NOME, PIX_CIDADE);
   const svg = await QRCode.toString(payload, {
     type: "svg",
