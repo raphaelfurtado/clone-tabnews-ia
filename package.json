@@ -1,0 +1,22 @@
+{
+  "name": "clone-tabnews-ia",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelfurtado/clone-tabnews-IA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raphaelfurtado/clone-tabnews-IA/issues"
+  },
+  "homepage": "https://github.com/raphaelfurtado/clone-tabnews-IA#readme",
+  "private": true,
+  "dependencies": {
+    "next": "16.2.12",
+    "qrcode": "1.5.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}
