@@ -1,6 +1,6 @@
 import "./globals.css";
 
-export const metadata = { title: "Biscoitinho da Sorte" };
+export const metadata = { title: "TabNews | Em construção" };
 
 export default function RootLayout({ children }) {
   return (

@@ -1,32 +1,35 @@
-import QRCode from "qrcode";
-import { gerarPix } from "../lib/pix";
-import Biscoito from "./Biscoito";
+import { buscarTotalConteudos } from "../lib/tabnews";
+import Confete from "./Confete";
 
-const PIX_CHAVE = "+5591980647336";
-const PIX_NOME = "Fábio Raphael";
-const PIX_CIDADE = "BRASIL";
+export const dynamic = "force-dynamic";
+
+const formatador = new Intl.NumberFormat("pt-BR");
 
 export default async function Page() {
-  const payload = gerarPix(PIX_CHAVE, PIX_NOME, PIX_CIDADE);
-  const svg = await QRCode.toString(payload, {
-    type: "svg",
-    errorCorrectionLevel: "M",
-    margin: 2,
-  });
+  const total = await buscarTotalConteudos();
 
   return (
     <main>
-      <h1>Biscoitinho da Sorte</h1>
+      <Confete />
+      <h1>Em construção</h1>
       <p className="intro">
-        O desafio é simples: clique no biscoito e descubra a mensagem que vai te
-        dar força hoje.
+        Estamos neste exato momento reconstruindo o TabNews, um lugar na
+        internet para quem trabalha com tecnologia e precisa consumir conteúdos
+        com valor concreto.
       </p>
-      <Biscoito
-        payload={payload}
-        nome={PIX_NOME}
-        chave={PIX_CHAVE.replace("+55", "")}
-        qr={`data:image/svg+xml,${encodeURIComponent(svg)}`}
-      />
+      {total === null ? (
+        <p className="total-indisponivel">
+          Não foi possível carregar o total de conteúdos agora.
+        </p>
+      ) : (
+        <p className="total">
+          <strong>{formatador.format(total)}</strong>
+          <span>conteúdos publicados no TabNews</span>
+        </p>
+      )}
+      <a className="link-oficial" href="https://www.tabnews.com.br">
+        Acessar o site oficial do TabNews
+      </a>
     </main>
   );
 }

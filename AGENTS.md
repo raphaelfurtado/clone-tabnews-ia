@@ -1,21 +1,21 @@
-# Biscoitinho da Sorte
+# TabNews em construção
 
-Página única em que a pessoa abre um biscoito da sorte, recebe uma frase motivacional aleatória e é convidada a apoiar o autor com um Pix.
+Página única "Em construção" do clone do TabNews, com o total de conteúdos publicados no TabNews, um link para o site oficial e uma animação de confete ao carregar.
 
 ## Stack
 
-- Next.js com App Router, publicado na Vercel.
+- Next.js com App Router, publicado na Vercel com renderização no servidor.
 - React e JavaScript, sem TypeScript.
 - CSS puro em uma folha de estilos global.
-- Biblioteca `qrcode` para gerar o QR Code do Pix.
+- Biblioteca `react-confetti` para a animação de confete.
 - Sem banco de dados, autenticação ou API própria.
 
 ## Arquitetura
 
 - `app/`: rotas, componentes, conteúdo e estilos da interface.
 - `lib/`: lógica sem dependência de interface.
-- O Server Component da página gera o código Pix e o QR Code, e entrega os dois prontos ao Client Component.
-- O Client Component cuida da interação: abrir o biscoito, sortear a frase, mostrar o Pix e copiar o código.
+- O Server Component da página lê o total de conteúdos da API pública do TabNews a cada acesso, sem cache, e mostra um aviso se a leitura falhar.
+- O Client Component `Confete` dispara a animação ao carregar e respeita a preferência por movimento reduzido.
 
 ## Convenções
 
